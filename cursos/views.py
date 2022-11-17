@@ -16,6 +16,6 @@ class CursoAPIView(APIView):
 class AvaliacaoAPIView(APIView):
 
     def get(self, request):
-        avaliacoes = Avaliacao.objects.all
+        avaliacoes = Avaliacao.objects.all()
         serializer = AvaliacaoSerializer(avaliacoes, many=True)
         return Response(serializer.data)

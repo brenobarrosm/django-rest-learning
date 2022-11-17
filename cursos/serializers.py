@@ -10,7 +10,7 @@ class AvaliacaoSerializer(serializers.ModelSerializer):
             'email': {'write_only': True}
         }
         model = Avaliacao
-        fields = {
+        fields = (
             'id',
             'curso',
             'nome',
@@ -19,16 +19,16 @@ class AvaliacaoSerializer(serializers.ModelSerializer):
             'avaliacao',
             'criacao',
             'ativo'
-        }
+        )
 
 class CursoSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Curso
-        fields = {
+        fields = (
             'id',
             'titulo',
             'url',
             'criacao',
             'ativo'
-        }
+        )
