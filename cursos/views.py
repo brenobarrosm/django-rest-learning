@@ -1,9 +1,12 @@
-from rest_framework import generics
+from rest_framework import generics, viewsets
 from rest_framework.generics import get_object_or_404
 
 from .models import Avaliacao, Curso
 from .serializers import AvaliacaoSerializer, CursoSerializer
 
+"""
+API V1
+"""
 
 class CursosAPIView(generics.ListCreateAPIView):
     queryset = Curso.objects.all()
@@ -31,4 +34,17 @@ class AvaliacaoAPIView(generics.RetrieveUpdateDestroyAPIView):
             return get_object_or_404(self.get_queryset(), 
                                     curso_id=self.kwargs.get('curso_pk'), 
                                     pk=self.kwargs.get('avaliacao_pk'))
-        return get_object_or_404(self.get_queryset(), pk=self.kwargs.get('avaliacao_pk'))
+        return get_object_or_404(self.get_queryset(), 
+                                pk=self.kwargs.get('avaliacao_pk'))
+
+"""
+API V2
+"""
+
+class CursoViewSet(viewsets.ModelViewSet):
+    queryset = Curso.objects.all()
+    serializer_class = CursoSerializer
+
+class AvaliacaoViewSet(viewsets.ModelViewSet):
+    queryset = Avaliacao.objects.all()
+    serializer_class = AvaliacaoSerializer
