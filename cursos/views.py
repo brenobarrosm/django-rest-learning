@@ -46,7 +46,7 @@ API V2
 
 class CursoViewSet(viewsets.ModelViewSet):
     permission_classes = (
-        IsSuperUser,
+        #IsSuperUser,
         permissions.DjangoModelPermissions, 
     )
     queryset = Curso.objects.all()
